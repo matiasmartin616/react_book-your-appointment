@@ -10,9 +10,8 @@ import {
   Text
 } from '@chakra-ui/react'
 import { useNavigate, Link as RouterLink } from 'react-router-dom'
-import { ArrowForwardIcon } from '@chakra-ui/icons'
+import { ArrowForwardIcon, AddIcon } from '@chakra-ui/icons'
 import { getFormData } from '../../../helpers/formHelpers'
-import { createUser } from '../../../services/authService'
 
 const Signup = () => {
   const formBackground = useColorModeValue('white.100', 'blue.700')
@@ -22,19 +21,11 @@ const Signup = () => {
 
   async function formSubmited (event) {
     event.preventDefault()
-    setFormSubmitLoading(true)
+    /* setFormSubmitLoading(true)
     const form = event.target
     const data = getFormData(form)
 
-    createUser(data)
-      .then((response) => {
-        setFormSubmitLoading(false)
-        navigate('/')
-      })
-      .catch(() => {
-        // TODO: gestionar error
-        setFormSubmitLoading(false)
-      })
+     */
   }
 
   return (
@@ -56,31 +47,35 @@ const Signup = () => {
               alt='Icono de Hiberus'
               borderRadius='10px'
             />
-            <Text fontSize='lg'>Regístrate</Text>
+            <Text fontSize='lg'>Reserva</Text>
           </Box>
         </Heading>
         <form onSubmit={formSubmited}>
-          <Box display="flex" justifyContent="space-between" alignItems="center" gap="6" mb="6">
-            <Input
-              placeholder="Nombre"
-              type="name"
-              variant="filled"
-              id='name'
-            />
-            <Input
-              placeholder="Apellido"
-              type="surname"
-              variant="filled"
-              id='surname'
-            />
-          </Box>
           <Input
-            placeholder="Email"
-            type="email"
-            id="email"
+              placeholder="2023/04/23"
+              type="date"
+              variant="filled"
+              id='date'
+              mb='6'
+          />
+          <Input
+            placeholder="12:45"
+            type="time"
+            id="timeIni"
             variant="filled"
             mb="6"
           />
+          <Box display="flex" justifyContent="space-evenly" alignItems="center" pb="9">
+            <Button colorScheme="green" type='submit' leftIcon={<AddIcon/>} size='sm' w='30%'>
+              15min
+            </Button>
+            <Button colorScheme="green" type='button' leftIcon={<AddIcon/>} size='sm' w='30%'>
+              30min
+            </Button>
+            <Button colorScheme="green" type='button' leftIcon={<AddIcon/>} size='sm' w='30%'>
+              1h
+            </Button>
+          </Box>
           <Input
             placeholder="Contraseña"
             id="password"
@@ -89,13 +84,8 @@ const Signup = () => {
             mb="6"
           />
           <Box display="flex" justifyContent="space-between" alignItems="center" pb="9">
-            <Button colorScheme='white' variant='link' size='sm'>
-              <RouterLink to="/">
-                ¿Ya tiene una cuenta?
-              </RouterLink>
-            </Button>
             <Button colorScheme="blue" type='submit' rightIcon={<ArrowForwardIcon />} size='sm' isLoading={formSubmitLoading}>
-              Registro
+              Reservar
             </Button>
           </Box>
         </form>

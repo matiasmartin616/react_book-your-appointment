@@ -29,14 +29,14 @@ const Login = () => {
     const isLoggedIn = useAuthStore((state) => state.isLoggedIn)
 
     useEffect(() => {
-        isLoggedIn && navigate('/users')
+        /* isLoggedIn && */ navigate('/users')
     }, [])
 
     async function formSubmited (event) {
         event.preventDefault()
-        setFormSubmitLoading(true)
-        const form = event.target
-        const data = getFormData(form)
+        /* setFormSubmitLoading(true)
+        const form = event.target */
+        /* const data = getFormData(form) */
 
         /* authenticateUser(data)
         .then((response) => {

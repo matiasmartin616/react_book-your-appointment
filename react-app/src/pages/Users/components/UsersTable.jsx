@@ -22,14 +22,6 @@ const UsersTable = ({ data }) => {
   const navigate = useNavigate()
   const logout = useAuthStore((state) => state.logout)
 
-  useEffect(() => {
-    if (token) {
-      fetchUsers(token)
-    } else {
-      logout()
-      navigate('/')
-    }
-  }, [token])
 
   const handleDeleteUser = async (userId) => {
     try {

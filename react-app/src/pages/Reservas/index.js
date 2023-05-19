@@ -1,1 +1,1 @@
-export { default as Signup } from './components/Signup.jsx'
+export { default as Reservas } from './components/Reservas.jsx'
